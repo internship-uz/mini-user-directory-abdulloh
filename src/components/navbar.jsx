@@ -1,6 +1,10 @@
 import { Search } from 'lucide-react';
+import { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 
-function Navbar({ search, setSearch }) {
+function Navbar() {
+    const { search, setSearch } = useContext(UserContext);
+
     return (
         <nav className='w-full bg-white shadow-sm px-6 py-4 sticky top-0 z-10'>
             <div className='max-w-[1300px] mx-auto flex items-center justify-between'>

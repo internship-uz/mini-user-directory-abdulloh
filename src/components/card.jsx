@@ -1,4 +1,9 @@
-function Card({ filterUsers, search }) {
+import { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
+
+function Card() {
+   const { filterUsers, search } = useContext(UserContext);
+
    return (
       <main className='w-full max-w-[1300px] mt-8 px-6'>
            {filterUsers.length === 0 ? (
