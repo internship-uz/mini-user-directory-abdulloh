@@ -8,9 +8,8 @@ export function UserProvider({ children }) {
   const [search, setSearch] = useState('');
 
   const filterUsers = users.filter((user) =>
-    user.name
-      .toLowerCase()
-      .includes(search.toLowerCase())
+    user.name.toLowerCase().includes(search.toLowerCase()) ||
+    user.email.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
