@@ -1,6 +1,7 @@
 import { Search } from 'lucide-react';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
+import FilterButton from './filter';
 
 function Navbar() {
     const { search, setSearch } = useContext(UserContext);
@@ -23,6 +24,7 @@ function Navbar() {
                     onChange={(e) => setSearch(e.target.value)} 
                   />
                 </div>
+                <FilterButton />
               </div>
             </div>
           </nav>

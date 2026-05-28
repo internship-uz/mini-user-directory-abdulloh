@@ -2,12 +2,35 @@ import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 
 function Card() {
-   const { filterUsers, search } = useContext(UserContext);
+   const { filterUsers, search, loading, error } = useContext(UserContext);
+
+   if (loading) {
+       return (
+           <main className='w-full max-w-[1300px] mt-8 px-6 flex justify-center'>
+               <div className="text-center text-indigo-600 mt-10 font-medium flex items-center gap-2">
+                   <div className="w-5 h-5 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
+                   Loading users...
+               </div>
+           </main>
+       );
+   }
+
+   if (error) {
+       return (
+           <main className='w-full max-w-[1300px] mt-8 px-6 flex justify-center'>
+               <div className="text-center text-red-500 mt-10 p-4 bg-red-50 rounded-lg">
+                    Error loading users: {error}
+               </div>
+           </main>
+       );
+   }
 
    return (
       <main className='w-full max-w-[1300px] mt-8 px-6'>
            {filterUsers.length === 0 ? (
-             <div className="text-center text-gray-500 mt-10">No users found matching start with "{search}"</div>
+             <div className="text-center text-gray-500 mt-10">
+                {search ? `No users found matching "${search}"` : "No users found."}
+             </div>
            ) : (
              <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
                {filterUsers.map(user => (
