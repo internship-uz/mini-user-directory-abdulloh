@@ -9,6 +9,7 @@ Bu loyiha tashqi API'dan (JSONPlaceholder) ma'lumotlarni qabul qilib, ularni res
 - **State Management:** Butun ilova bo'ylab holatni boshqarish uchun (masalan qidiruv tizimi natijalari va foydalanuvchilar ro'yxatini uzatish uchun) **React Context API** (`UserContext`) ishlatildi.
 - **Qidiruv (Search) Tizimi:** Foydalanuvchilarni ismlari bo'yicha qidiruv filteri logikasi qo'shildi.
 - **Responsiv va Chiroyli Dizayn:** Tailwind CSS (v4) yordamida har bir foydalanuvchi chiroyli kartochkalarga joylandi va ular har xil qurilmalarga (`Card`) moslashadigan (`Grid`) qilib yasaldi. 
+- **Foydalanuvchi Ma'lumotlari Modali (Modal / Popup):** Foydalanuvchi kartochkasiga bosilganda uning qo'shimcha ma'lumotlarini (veb-sayt, to'liq manzil va kompaniya) ko'rsatuvchi chiroyli va interaktiv `UserDetailsModal` komponenti qo'shildi.
 - **Loading va Error UI:** Ma'lumotlar kelgunicha Loading spin, xatolik yuz bersa Error xabarlari maxsus vizual tarzda ko'rsatiladi.
 
 ## 🛠 Ishlatilgan Texnologiyalar
@@ -24,7 +25,7 @@ Bu loyiha tashqi API'dan (JSONPlaceholder) ma'lumotlarni qabul qilib, ularni res
 
 ```
 src/
- ├── components/     # UI komponentlar (Navbar, Card, Filter)
+ ├── components/     # UI komponentlar (Navbar, Card, Filter, UserDetailsModal)
  ├── context/        # Context API logikalari (UserContext)
  ├── hooks/          # Custom hook'lar (useUsers)
  ├── service/        # Backend yoki tashqi API'lar bilan ishlovchi logikalar (api.js)
