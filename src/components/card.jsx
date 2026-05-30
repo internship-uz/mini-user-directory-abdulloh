@@ -1,8 +1,10 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { UserContext } from '../context/UserContext';
+import UserDetailsModal from './userDetailsModal';
 
 function Card() {
    const { filterUsers, search, loading, error } = useContext(UserContext);
+   const [selectedUser, setSelectedUser] = useState(null);
 
    if (loading) {
        return (
@@ -34,7 +36,11 @@ function Card() {
            ) : (
              <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
                {filterUsers.map(user => (
-                 <div key={user.id} className='bg-white border border-gray-200 p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all flex flex-col gap-3'>
+                 <div 
+                    key={user.id} 
+                    onClick={() => setSelectedUser(user)}
+                    className='bg-white border border-gray-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col gap-3 cursor-pointer hover:border-indigo-300'
+                 >
                    <div className='flex items-center gap-3'>
                      <div className='w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold text-xl'>
                        {user.name.charAt(0)}
@@ -53,6 +59,11 @@ function Card() {
                ))}
              </div>
            )}
+
+           <UserDetailsModal 
+             user={selectedUser} 
+             onClose={() => setSelectedUser(null)} 
+           />
          </main>
    );
 }
